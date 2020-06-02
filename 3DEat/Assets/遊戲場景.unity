@@ -678,8 +678,8 @@ MonoBehaviour:
   gravity: 0
   body: {fileID: 1636391322}
   gm: {fileID: 1320047714}
-  soundRuby: {fileID: 0}
-  soundDiamondo: {fileID: 0}
+  soundRuby: {fileID: 8300000, guid: 2ee3734247526c7448587af8843c7160, type: 3}
+  soundDiamondo: {fileID: 8300000, guid: 4911d945612d6bb478f693a6f0408399, type: 3}
 --- !u!82 &1636391325
 AudioSource:
   m_ObjectHideFlags: 0
@@ -783,6 +783,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1245511248570169865, guid: 33c36c57dd49aa34eaa4007da4e37573,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 6a8d21d1290685b4cbccc8a6e32431b7,
+        type: 3}
+    - target: {fileID: 1245511248800186045, guid: 33c36c57dd49aa34eaa4007da4e37573,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1245511249010507041, guid: 33c36c57dd49aa34eaa4007da4e37573,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

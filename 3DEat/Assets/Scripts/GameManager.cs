@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
 
     private void Win()
     {
+
+        Time.timeScale = 0f;
         final.alpha = 1;                                    //顯示結束畫面，啟動互動，啟動遮擋
         final.interactable = true;
         final.blocksRaycasts = true;
@@ -105,6 +107,7 @@ public class GameManager : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("遊戲場景");
+        Time.timeScale = 1f;
     }
 
     public void Quit()
