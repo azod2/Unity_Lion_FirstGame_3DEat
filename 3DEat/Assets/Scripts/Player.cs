@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
 
     public float v;
     public float h;
+    public float gravity;
     private Vector3 angle;
     private float time;
    
@@ -28,7 +30,35 @@ public class Player : MonoBehaviour
     }
 
     private Animator ani;
-    private Rigidbody body;
+    public Rigidbody body;
+    private AudioSource aud;
+    public GameManager gm;
+
+
+
+    public AudioClip soundRuby, soundDiamondo;
+
+
+    private void Hitprop(GameObject prop)
+    {   
+
+        //print("碰到的物件標籤為 : " + prop.name);
+        if (prop.tag=="Ruby")
+        {
+            aud.PlayOneShot(soundDiamondo, 2);
+            Destroy(prop);
+        }
+        else if (prop.tag=="Dia")
+        {
+            aud.PlayOneShot(soundRuby, 2);
+            Destroy(prop);
+        }
+
+        Debug.Log("gm.Getprop : " + prop.tag);
+        gm.Getprop(prop.tag);
+
+    }
+
 
 
     /// <summary>
@@ -69,11 +99,13 @@ public class Player : MonoBehaviour
         {
             body.AddForce(0, height, 0);
 
+
             time = 0;
 
             if (!isGround)
             {
                 time += Time.deltaTime;
+            body.velocity +=new Vector3(0, gravity, 0);
             }
             ani.SetFloat("jumpforce", time);
 
@@ -91,10 +123,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 吃道具
     /// </summary>
-    private void HitProp()
-    {
 
-    }
 
     
 
@@ -102,7 +131,8 @@ public class Player : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         ani = GetComponent<Animator>();
-
+        aud = GetComponent<AudioSource>();
+        //gm = GetComponent<GameManager>();
     }
 
     private void FixedUpdate()
@@ -123,5 +153,11 @@ public class Player : MonoBehaviour
     {
          Jump();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Hitprop(other.gameObject);
+    }
+
 
 }

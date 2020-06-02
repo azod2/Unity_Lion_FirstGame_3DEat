@@ -6,6 +6,8 @@ TagManager:
   tags:
   - "\u5BF6\u77F3"
   - "\u58DE\u5BF6\u77F3"
+  - Dia
+  - Ruby
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - "\u651D\u5F71\u6A5F"
   - 
   - 
   - 
